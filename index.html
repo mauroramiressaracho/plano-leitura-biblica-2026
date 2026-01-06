@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plano de Leitura Bíblica 2026</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+        
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        
+
+        body {
+
+            font-family: 'Open Sans', sans-serif;
+
+            background-color: #f8f7f3;
+
+            color: #333;
+
+            line-height: 1.5;
+
+            padding: 20px;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+        }
+
+        
+
+        .church-header {
+
+            background: linear-gradient(to right, #1a5276, #3498db);
+
+            color: white;
+
+            padding: 25px;
+
+            border-radius: 8px 8px 0 0;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        }
+
+        
+
+        .logo-placeholder {
+
+            width: 96px;
+
+            height: 96px;
+
+            background-color: rgba(255, 255, 255, 0.1);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 3px solid rgba(255, 255, 255, 0.2);
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .logo-placeholder img {
+
+            max-width: 100%;
+
+            max-height: 100%;
+
+            object-fit: contain;
+
+        }
+
+        
+
+        .logo-placeholder .placeholder-text {
+
+            text-align: center;
+
+            color: rgba(255, 255, 255, 0.7);
+
+            font-size: 12px;
+
+            padding: 10px;
+
+        }
+
+        
+
+        .church-info {
+
+            flex-grow: 1;
+
+            text-align: center;
+
+            padding: 0 30px;
+
+        }
+
+        
+
+        .church-name {
+
+            font-family: 'Merriweather', serif;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
+        }
+
+        
+
+        .church-motto {
+
+            font-size: 16px;
+
+            font-weight: 300;
+
+            opacity: 0.9;
+
+            font-style: italic;
+
+            margin-bottom: 5px;
+
+        }
+
+        
+
+        .church-address {
+
+            font-size: 14px;
+
+            opacity: 0.8;
+
+        }
+
+        
+
+        .month-selector {
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 20px;
+
+            gap: 10px;
+
+        }
+
+        .month-menu-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            border: 1px solid #d4e9f9;
+            background-color: #e8f4fc;
+            font-family: 'Merriweather', serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        .month-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        
+
+        .month-tab {
+
+            padding: 12px 24px;
+
+            background-color: #e8f4fc;
+
+            border: none;
+
+            border-radius: 4px;
+
+            font-family: 'Merriweather', serif;
+
+            font-weight: 600;
+
+            font-size: 16px;
+
+            color: #2c3e50;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+        }
+
+        
+
+        .month-tab:hover {
+
+            background-color: #d4e9f9;
+
+        }
+
+        
+
+        .month-tab.active {
+
+            background-color: #1a5276;
+
+            color: white;
+
+        }
+
+        
+
+        .calendar-container {
+
+            background-color: white;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            display: none;
+
+        }
+
+        
+
+        .calendar-container.active {
+
+            display: block;
+
+        }
+
+        
+
+        .calendar-header {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #e6e2d8;
+
+        }
+
+        
+
+        h1 {
+
+            font-family: 'Merriweather', serif;
+
+            font-weight: 700;
+
+            color: #2c3e50;
+
+            font-size: 28px;
+
+            margin-bottom: 5px;
+
+        }
+
+        
+
+        .subtitle {
+
+            font-family: 'Merriweather', serif;
+
+            color: #7b8a8b;
+
+            font-size: 18px;
+
+            font-weight: 300;
+
+        }
+
+        
+
+        .month-year {
+
+            font-size: 20px;
+
+            color: #1a5276;
+
+            font-weight: 600;
+
+            margin-top: 10px;
+
+            letter-spacing: 1px;
+
+        }
+
+        
+
+        .calendar-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(7, 1fr);
+
+            gap: 2px;
+
+            margin-bottom: 30px;
+
+        }
+
+        
+
+        .day-header {
+
+            background-color: #f1f8ff;
+
+            padding: 12px 5px;
+
+            text-align: center;
+
+            font-weight: 600;
+
+            color: #2c3e50;
+
+            border-radius: 4px;
+
+            font-size: 14px;
+
+        }
+
+        
+
+        .day-cell {
+
+            border: 1px solid #e6e2d8;
+
+            min-height: 100px;
+
+            padding: 8px;
+
+            position: relative;
+
+            background-color: #fff;
+
+            border-radius: 4px;
+
+        }
+
+
+
+        .day-cell.has-reading {
+
+            cursor: pointer;
+
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+        }
+
+
+
+        .day-cell.has-reading:hover {
+
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+
+            transform: translateY(-1px);
+
+        }
+
+        
+
+        .day-cell.empty {
+
+            background-color: #f9f9f9;
+
+            border-color: #f0f0f0;
+
+        }
+
+        
+
+        .day-number {
+
+            position: absolute;
+
+            top: 5px;
+
+            right: 8px;
+
+            font-weight: 600;
+
+            color: #7b8a8b;
+
+            font-size: 14px;
+
+        }
+
+        
+
+        .reading-content {
+
+            margin-top: 20px;
+
+            font-size: 12px;
+
+            color: #2c3e50;
+
+            line-height: 1.4;
+
+        }
+
+        
+
+        .reading-highlight {
+
+            background-color: #e8f4fc;
+
+            border-left: 3px solid #1a5276;
+
+            padding: 8px;
+
+            border-radius: 0 3px 3px 0;
+
+        }
+
+
+
+        .day-cell.has-reading .reading-highlight {
+
+            cursor: pointer;
+
+        }
+
+        
+
+        .bible-icon {
+
+            display: inline-block;
+
+            width: 14px;
+
+            height: 14px;
+
+            background-color: #1a5276;
+
+            color: white;
+
+            border-radius: 50%;
+
+            text-align: center;
+
+            line-height: 14px;
+
+            font-size: 9px;
+
+            margin-right: 5px;
+
+        }
+
+        
+
+        .bible-reference {
+
+            font-weight: 600;
+
+            color: #2c3e50;
+
+            font-size: 11px;
+
+            display: block;
+
+            margin-top: 2px;
+
+        }
+
+        
+
+        .baptist-symbol {
+
+            position: absolute;
+
+            bottom: 5px;
+
+            left: 8px;
+
+            color: #1a5276;
+
+            opacity: 0.3;
+
+            font-size: 12px;
+
+        }
+
+        
+
+        .footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 30px;
+
+            background-color: #f1f8ff;
+
+            border-radius: 0 0 8px 8px;
+
+            color: #2c3e50;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            border-top: 3px solid #1a5276;
+
+        }
+
+        
+
+        .footer-title {
+
+            font-family: 'Merriweather', serif;
+
+            font-weight: 700;
+
+            color: #1a5276;
+
+            font-size: 18px;
+
+            margin-bottom: 10px;
+
+        }
+
+        
+
+        .footer-text {
+
+            color: #5d6d7e;
+
+            font-size: 14px;
+
+        }
+
+        
+
+        .verse {
+
+            font-style: italic;
+
+            color: #1a5276;
+
+            margin-top: 15px;
+
+            padding: 10px;
+
+            background-color: rgba(26, 82, 118, 0.05);
+
+            border-radius: 4px;
+
+            font-size: 13px;
+
+        }
+
+        
+
+        .print-button {
+
+            display: block;
+
+            margin: 20px auto;
+
+            background-color: #1a5276;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 4px;
+
+            font-family: 'Open Sans', sans-serif;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: background-color 0.3s;
+
+        }
+
+        
+
+        .print-button:hover {
+
+            background-color: #154360;
+
+        }
+
+
+
+        .modal-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background-color: rgba(12, 24, 36, 0.6);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+
+        }
+
+
+
+        .modal-overlay.open {
+
+            display: flex;
+
+        }
+
+
+
+        .modal {
+
+            position: relative;
+
+            background-color: #fff;
+
+            border-radius: 10px;
+
+            max-width: 920px;
+
+            width: 100%;
+
+            max-height: 90vh;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+
+        }
+
+
+
+        .modal-header {
+
+            padding: 20px 24px 16px;
+
+            border-bottom: 1px solid #e6e2d8;
+
+        }
+
+
+
+        .modal-title {
+
+            font-family: 'Merriweather', serif;
+
+            font-size: 22px;
+
+            color: #1a5276;
+
+        }
+
+
+
+        .modal-subtitle {
+
+            margin-top: 6px;
+
+            color: #7b8a8b;
+
+            font-size: 14px;
+
+        }
+
+
+
+        .modal-body {
+
+            padding: 20px 24px;
+
+            overflow-y: auto;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+
+            color: #2c3e50;
+
+        }
+
+
+
+        .modal-close {
+
+            position: absolute;
+
+            top: 14px;
+
+            right: 16px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            color: #1a5276;
+
+        }
+
+
+
+        .reading-section {
+
+            margin-bottom: 22px;
+
+        }
+
+
+
+        .reading-section:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+
+        .reading-section h3 {
+
+            font-family: 'Merriweather', serif;
+
+            font-size: 17px;
+
+            color: #1a5276;
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .chapter-block {
+
+            margin-bottom: 14px;
+
+        }
+
+
+
+        .chapter-title {
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+
+        }
+
+
+
+        .chapter-text {
+
+            margin: 0;
+
+        }
+
+
+
+        .verse-number {
+
+            font-size: 11px;
+
+            color: #7b8a8b;
+
+            vertical-align: super;
+
+            margin-right: 4px;
+
+        }
+
+
+
+        .loading-text,
+
+        .error-text {
+
+            font-size: 14px;
+
+            color: #7b8a8b;
+
+        }
+
+
+
+        body.modal-open {
+
+            overflow: hidden;
+
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+
+            .church-header {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .church-info {
+                padding: 0;
+            }
+
+            .logo-placeholder {
+                width: 72px;
+                height: 72px;
+            }
+
+            .church-name {
+                font-size: 24px;
+            }
+
+            .month-tab {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+
+            .calendar-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .church-name {
+                font-size: 22px;
+            }
+
+            .church-motto,
+            .church-address {
+                font-size: 12px;
+            }
+
+            .calendar-container {
+                padding: 16px;
+            }
+
+            .calendar-grid {
+                gap: 1px;
+            }
+
+            .month-selector {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .month-menu-toggle {
+                display: inline-flex;
+                width: 100%;
+            }
+
+            .month-tabs {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                margin-top: 6px;
+                padding: 10px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+                z-index: 20;
+            }
+
+            .month-selector.open .month-tabs {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 8px;
+            }
+
+            .month-tab {
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+                padding: 10px 8px;
+            }
+
+            .day-header {
+                font-size: 11px;
+                padding: 8px 2px;
+            }
+
+            .day-cell {
+                min-height: 56px;
+                padding: 6px;
+            }
+
+            .day-number {
+                font-size: 11px;
+            }
+
+            .reading-content {
+                display: none;
+            }
+
+            .reading-highlight {
+                padding: 6px;
+            }
+
+            .bible-reference {
+                font-size: 10px;
+            }
+
+            .baptist-symbol {
+                display: none;
+            }
+
+            .day-cell.has-reading::after {
+                content: '';
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: #1a5276;
+                position: absolute;
+                left: 6px;
+                bottom: 6px;
+                opacity: 0.65;
+            }
+
+            .footer {
+                font-size: 12px;
+            }
+
+            .footer-title {
+                font-size: 16px;
+            }
+
+            .verse {
+                font-size: 12px;
+            }
+
+            .modal {
+                max-height: 100vh;
+                border-radius: 0;
+            }
+
+            .modal-header {
+                padding: 16px;
+            }
+
+            .modal-body {
+                padding: 16px;
+                font-size: 13px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .logo-placeholder {
+                width: 64px;
+                height: 64px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .month-tab {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .reading-content {
+                margin-top: 12px;
+            }
+
+            .bible-icon {
+                width: 12px;
+                height: 12px;
+                line-height: 12px;
+                font-size: 8px;
+            }
+        }
+
+        
+
+        @media print {
+
+            body {
+
+                padding: 0;
+
+            }
+
+            
+
+            .month-selector,
+
+            .print-button {
+
+                display: none;
+
+            }
+
+
+
+            .modal-overlay {
+
+                display: none !important;
+
+            }
+
+            
+
+            .calendar-container {
+
+                box-shadow: none;
+
+                padding: 10px;
+
+                display: block !important;
+
+                page-break-after: always;
+
+            }
+
+            
+
+            .calendar-container:last-of-type {
+
+                page-break-after: auto;
+
+            }
+
+            
+
+            .church-header {
+
+                background: #1a5276 !important;
+
+                -webkit-print-color-adjust: exact;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Cabeçalho da Igreja com espaço para logo -->
+
+    <div class="church-header">
+
+        <div class="logo-placeholder">
+
+            <!-- REMOVA ESTE COMENTÁRIO E COLOQUE SUA IMAGEM AQUI -->
+
+            <!-- <img src="caminho/para/logo-igreja.png" alt="Logo da Igreja"> -->
+
+            <div class="placeholder-text">
+
+                LOGO<br>DA<br>IGREJA
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="church-info">
+
+            <div class="church-name">Quarta Igreja Batista de Campo Grande</div>
+
+            <div class="church-motto">"Conhecendo a Cristo e fazendo discípulos"</div>
+
+            <div class="church-address">R. José Antônio, 1951 • Campo Grande/MS • (67) 3213-4625</div>
+
+        </div>
+
+        
+
+        <div class="logo-placeholder" style="visibility: hidden;">
+
+            <!-- Espaço para balancear o layout -->
+
+        </div>
+
+    </div>
+
+    
+
+    <div class="month-selector" aria-label="Seleção de mês">
+        <button class="month-menu-toggle" type="button" aria-expanded="false" aria-controls="month-tabs">
+            Selecionar mês
+        </button>
+        <div class="month-tabs" id="month-tabs"></div>
+    </div>
+
+    
+
+    <div id="calendar-wrapper"></div>
+
+    
+
+    <!-- Rodapé -->
+
+    <div class="footer">
+
+        <div class="footer-title">Escola Bíblica Dinâmica</div>
+
+        <div class="footer-text">Plano de Leitura Bíblica Anual 2026</div>
+
+        <div class="footer-text">Cultos: Domingos 11h e 18h • Quartas: Estudo Bíblico 19h30</div>
+
+        <div class="verse">"Lâmpada para os meus pés é a tua palavra e luz para os meus caminhos."<br>Salmos 119:105</div>
+
+    </div>
+
+
+
+    <div class="modal-overlay" id="reading-modal" aria-hidden="true" role="dialog" aria-modal="true">
+
+        <div class="modal">
+
+            <button class="modal-close" type="button" aria-label="Fechar modal">×</button>
+
+            <div class="modal-header">
+
+                <div class="modal-title" id="modal-title">Leitura do dia</div>
+
+                <div class="modal-subtitle" id="modal-subtitle"></div>
+
+            </div>
+
+            <div class="modal-body" id="modal-body"></div>
+
+        </div>
+
+    </div>
+
+    
+
+    <button class="print-button" onclick="window.print()">📄 Imprimir Calendários</button>
+
+    <script src="plan-data.js"></script>
+    <script src="bible-data.js"></script>
+
+    
+
+    <script>
+
+        const YEAR = 2026;
+
+        const PLAN_URL = 'plano_leitura_2026.json';
+
+        const BIBLE_URL = 'NTLH.json';
+
+        const monthLabels = [
+
+            'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO',
+
+            'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'
+
+        ];
+
+        const weekDays = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
+
+
+
+        let readingByDate = {};
+
+        let bibleDataPromise = null;
+
+        let bibleIndex = null;
+
+        let bibleMatchers = [];
+
+        let bibleMatchersCompact = [];
+
+        let lastFocusedElement = null;
+
+
+
+        function pad(value) {
+
+            return String(value).padStart(2, '0');
+
+        }
+
+
+
+        async function fetchJson(url) {
+
+            const response = await fetch(url);
+
+            if (!response.ok) {
+
+                throw new Error(`Falha ao carregar ${url}: ${response.status}`);
+
+            }
+
+            return response.json();
+
+        }
+
+        function normalizeForMatch(value) {
+            return value
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[̀-ͯ]/g, '')
+                .replace(/[–—]/g, '-')
+                .replace(/[^a-z0-9.\-\s]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function addBookMatchers(label, book, matcherSet, compactSet) {
+            if (!label) {
+                return;
+            }
+
+            const variants = [
+                label,
+                label.replace(/(\d)([a-zA-Z])/g, '$1 $2')
+            ];
+
+            variants.forEach(variant => {
+                const normalized = normalizeForMatch(variant);
+                if (!normalized) {
+                    return;
+                }
+
+                if (!matcherSet.has(normalized)) {
+                    matcherSet.add(normalized);
+                    bibleMatchers.push({ key: normalized, book });
+                }
+
+                const compact = normalized.replace(/\s+/g, '');
+                if (compact && !compactSet.has(compact)) {
+                    compactSet.add(compact);
+                    bibleMatchersCompact.push({ key: compact, book });
+                }
+            });
+        }
+
+        function prepareBibleIndex(data) {
+            bibleIndex = new Map();
+            bibleMatchers = [];
+            bibleMatchersCompact = [];
+
+            const matcherSet = new Set();
+            const compactSet = new Set();
+
+            data.forEach(book => {
+                bibleIndex.set(normalizeForMatch(book.name), book);
+                addBookMatchers(book.name, book, matcherSet, compactSet);
+                addBookMatchers(book.abbrev, book, matcherSet, compactSet);
+            });
+
+            bibleMatchers.sort((a, b) => b.key.length - a.key.length);
+            bibleMatchersCompact.sort((a, b) => b.key.length - a.key.length);
+        }
+
+
+
+
+        function buildReadingMap(planData) {
+
+            return planData.reduce((acc, entry) => {
+
+                acc[entry.date] = entry.reading;
+
+                return acc;
+
+            }, {});
+
+        }
+
+
+
+        function formatDate(dateKey) {
+
+            const [year, month, day] = dateKey.split('-');
+
+            return `${day}/${month}/${year}`;
+
+        }
+
+
+
+        function createCalendarMonth(monthIndex) {
+
+            const container = document.createElement('div');
+
+            container.className = 'calendar-container';
+
+            container.id = `month-${monthIndex}-calendar`;
+
+
+
+            const header = document.createElement('div');
+
+            header.className = 'calendar-header';
+
+
+
+            const title = document.createElement('h1');
+
+            title.textContent = 'Plano de Leitura Bíblica';
+
+
+
+            const subtitle = document.createElement('div');
+
+            subtitle.className = 'subtitle';
+
+            subtitle.textContent = 'Caminhando pela Palavra de Deus em 2026';
+
+
+
+            const monthYear = document.createElement('div');
+
+            monthYear.className = 'month-year';
+
+            monthYear.textContent = `${monthLabels[monthIndex]} ${YEAR}`;
+
+
+
+            header.appendChild(title);
+
+            header.appendChild(subtitle);
+
+            header.appendChild(monthYear);
+
+            container.appendChild(header);
+
+
+
+            const grid = document.createElement('div');
+
+            grid.className = 'calendar-grid';
+
+            grid.id = `month-${monthIndex}-grid`;
+
+
+
+            weekDays.forEach(day => {
+
+                const headerCell = document.createElement('div');
+
+                headerCell.className = 'day-header';
+
+                headerCell.textContent = day;
+
+                grid.appendChild(headerCell);
+
+            });
+
+
+
+            const firstDay = new Date(YEAR, monthIndex, 1).getDay();
+
+            const daysInMonth = new Date(YEAR, monthIndex + 1, 0).getDate();
+
+
+
+            for (let i = 0; i < firstDay; i++) {
+
+                grid.appendChild(createEmptyCell());
+
+            }
+
+
+
+            for (let day = 1; day <= daysInMonth; day++) {
+
+                const dateKey = `${YEAR}-${pad(monthIndex + 1)}-${pad(day)}`;
+
+                const reading = readingByDate[dateKey];
+
+                grid.appendChild(createDayCell(day, dateKey, reading));
+
+            }
+
+
+
+            const totalCells = firstDay + daysInMonth;
+
+            const remainingCells = 42 - totalCells;
+
+            for (let i = 0; i < remainingCells; i++) {
+
+                grid.appendChild(createEmptyCell());
+
+            }
+
+
+
+            container.appendChild(grid);
+
+            return container;
+
+        }
+
+
+
+        function createDayCell(day, dateKey, reading) {
+
+            const dayCell = document.createElement('div');
+
+            dayCell.className = 'day-cell';
+
+            dayCell.setAttribute('data-day', day);
+
+
+
+            const dayNumber = document.createElement('div');
+
+            dayNumber.className = 'day-number';
+
+            dayNumber.textContent = day;
+
+            dayCell.appendChild(dayNumber);
+
+
+
+            const symbol = document.createElement('div');
+
+            symbol.className = 'baptist-symbol';
+
+            symbol.innerHTML = '✝';
+
+            dayCell.appendChild(symbol);
+
+
+
+            if (reading) {
+
+                dayCell.classList.add('has-reading');
+
+                dayCell.setAttribute('role', 'button');
+
+                dayCell.setAttribute('tabindex', '0');
+
+                dayCell.setAttribute('aria-label', `Leitura de ${formatDate(dateKey)}: ${reading}`);
+
+
+
+                const readingContent = document.createElement('div');
+
+                readingContent.className = 'reading-content';
+
+
+
+                const readingHighlight = document.createElement('div');
+
+                readingHighlight.className = 'reading-highlight';
+
+
+
+                const bibleIcon = document.createElement('span');
+
+                bibleIcon.className = 'bible-icon';
+
+                bibleIcon.innerHTML = '📖';
+
+
+
+                const bibleReference = document.createElement('span');
+
+                bibleReference.className = 'bible-reference';
+
+                bibleReference.textContent = reading;
+
+
+
+                readingHighlight.appendChild(bibleIcon);
+
+                readingHighlight.appendChild(document.createTextNode(' Leitura do dia'));
+
+                readingHighlight.appendChild(bibleReference);
+
+                readingContent.appendChild(readingHighlight);
+
+                dayCell.appendChild(readingContent);
+
+
+
+                const openHandler = () => openReadingModal(dateKey, reading);
+
+                dayCell.addEventListener('click', openHandler);
+
+                dayCell.addEventListener('keydown', event => {
+
+                    if (event.key === 'Enter' || event.key === ' ') {
+
+                        event.preventDefault();
+
+                        openHandler();
+
+                    }
+
+                });
+
+            }
+
+
+
+            return dayCell;
+
+        }
+
+
+
+        function createEmptyCell() {
+
+            const emptyCell = document.createElement('div');
+
+            emptyCell.className = 'day-cell empty';
+
+            return emptyCell;
+
+        }
+
+
+
+        
+        function updateMonthMenuLabel(monthIndex) {
+            const toggle = document.querySelector('.month-menu-toggle');
+            if (!toggle) {
+                return;
+            }
+
+            toggle.textContent = `${monthLabels[monthIndex]} ${YEAR}`;
+        }
+
+        function closeMonthMenu() {
+            const selector = document.querySelector('.month-selector');
+            const toggle = document.querySelector('.month-menu-toggle');
+            if (!selector || !toggle) {
+                return;
+            }
+
+            selector.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        function setupMonthMenuToggle() {
+            const selector = document.querySelector('.month-selector');
+            const toggle = document.querySelector('.month-menu-toggle');
+            if (!selector || !toggle) {
+                return;
+            }
+
+            toggle.addEventListener('click', event => {
+                event.stopPropagation();
+                const isOpen = selector.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            document.addEventListener('click', event => {
+                if (!selector.classList.contains('open')) {
+                    return;
+                }
+
+                if (!selector.contains(event.target)) {
+                    closeMonthMenu();
+                }
+            });
+        }
+
+function switchMonth(monthIndex) {
+
+            document.querySelectorAll('.month-tab').forEach(tab => {
+
+                tab.classList.toggle('active', Number(tab.dataset.month) === monthIndex);
+
+            });
+
+
+
+            document.querySelectorAll('.calendar-container').forEach(container => {
+
+                container.classList.toggle('active', container.id === `month-${monthIndex}-calendar`);
+
+            });
+
+            updateMonthMenuLabel(monthIndex);
+            closeMonthMenu();
+
+        }
+
+
+
+        async function loadBibleData() {
+
+            if (!bibleDataPromise) {
+
+                bibleDataPromise = fetchJson(BIBLE_URL)
+
+                    .catch(error => {
+
+                        const inlineBible = window.INLINE_BIBLE;
+
+                        if (Array.isArray(inlineBible) && inlineBible.length) {
+
+                            console.warn('Texto bíblico carregado via bible-data.js (modo local).');
+
+                            return inlineBible;
+
+                        }
+
+                        throw error;
+
+                    })
+
+                    .then(data => {
+
+                        prepareBibleIndex(data);
+
+                        return data;
+
+                    });
+
+            }
+
+            return bibleDataPromise;
+
+        }
+
+
+
+        function parseRange(rangeText, book) {
+
+            if (!rangeText) {
+
+                const endChapter = book.chapters.length;
+
+                const endVerse = book.chapters[endChapter - 1]?.length || 1;
+
+                return {
+
+                    startChapter: 1,
+
+                    startVerse: 1,
+
+                    endChapter,
+
+                    endVerse
+
+                };
+
+            }
+
+            const normalized = rangeText.replace(/\s+/g, '').replace(/[–—]/g, '-');
+
+            const parts = normalized.split('-');
+
+            const parsePoint = value => {
+
+                const [chapterText, verseText] = value.split('.');
+
+                return {
+
+                    chapter: Number(chapterText),
+
+                    verse: verseText ? Number(verseText) : null
+
+                };
+
+            };
+
+            const startPoint = parsePoint(parts[0]);
+
+            let endPoint = parts[1] ? parsePoint(parts[1]) : startPoint;
+
+            if (startPoint.verse && parts[1] && !parts[1].includes('.')) {
+
+                endPoint = { chapter: startPoint.chapter, verse: Number(parts[1]) };
+
+            }
+
+            const startChapter = startPoint.chapter;
+
+            const startVerse = startPoint.verse || 1;
+
+            const endChapter = endPoint.chapter;
+
+            const endVerse = endPoint.verse || book.chapters[endChapter - 1]?.length || 1;
+
+            return {
+
+                startChapter,
+
+                startVerse,
+
+                endChapter,
+
+                endVerse
+
+            };
+
+        }
+
+
+
+        function parseReadingSegments(reading) {
+
+            return reading
+
+                .split(';')
+
+                .map(part => part.trim())
+
+                .filter(Boolean)
+
+                .map(part => {
+
+                    const normalized = normalizeForMatch(part);
+
+                    const compact = normalized.replace(/\s+/g, '');
+
+                    let matcher = bibleMatchers.find(entry => normalized.startsWith(entry.key));
+
+                    let rangeText = '';
+
+                    if (matcher) {
+
+                        rangeText = normalized.slice(matcher.key.length).trim();
+
+                    } else {
+
+                        matcher = bibleMatchersCompact.find(entry => compact.startsWith(entry.key));
+
+                        if (matcher) {
+
+                            rangeText = compact.slice(matcher.key.length).trim();
+
+                        }
+
+                    }
+
+                    if (!matcher) {
+
+                        return { segment: part, error: 'Livro não encontrado.' };
+
+                    }
+
+                    return {
+
+                        segment: part,
+
+                        book: matcher.book,
+
+                        range: parseRange(rangeText, matcher.book)
+
+                    };
+
+                });
+
+        }
+
+
+
+        function buildPassageContent(book, range) {
+
+            const fragment = document.createDocumentFragment();
+
+
+
+            for (let chapterNumber = range.startChapter; chapterNumber <= range.endChapter; chapterNumber++) {
+
+                const chapter = book.chapters[chapterNumber - 1];
+
+                if (!chapter) {
+
+                    continue;
+
+                }
+
+
+
+                const chapterBlock = document.createElement('div');
+
+                chapterBlock.className = 'chapter-block';
+
+
+
+                const chapterTitle = document.createElement('div');
+
+                chapterTitle.className = 'chapter-title';
+
+                chapterTitle.textContent = `${book.name} ${chapterNumber}`;
+
+
+
+                const chapterText = document.createElement('p');
+
+                chapterText.className = 'chapter-text';
+
+
+
+                const startVerse = chapterNumber === range.startChapter ? range.startVerse : 1;
+
+                const endVerse = chapterNumber === range.endChapter ? range.endVerse : chapter.length;
+
+
+
+                for (let verseNumber = startVerse; verseNumber <= endVerse; verseNumber++) {
+
+                    const verseText = chapter[verseNumber - 1];
+
+                    if (!verseText) {
+
+                        continue;
+
+                    }
+
+
+
+                    const verseSpan = document.createElement('span');
+
+                    const verseNumberSpan = document.createElement('span');
+
+                    verseNumberSpan.className = 'verse-number';
+
+                    verseNumberSpan.textContent = verseNumber;
+
+
+
+                    verseSpan.appendChild(verseNumberSpan);
+
+                    verseSpan.appendChild(document.createTextNode(verseText + ' '));
+
+                    chapterText.appendChild(verseSpan);
+
+                }
+
+
+
+                chapterBlock.appendChild(chapterTitle);
+
+                chapterBlock.appendChild(chapterText);
+
+                fragment.appendChild(chapterBlock);
+
+            }
+
+
+
+            return fragment;
+
+        }
+
+
+
+        async function openReadingModal(dateKey, reading) {
+
+            const modal = document.getElementById('reading-modal');
+
+            const modalBody = document.getElementById('modal-body');
+
+            const subtitle = document.getElementById('modal-subtitle');
+
+
+
+            lastFocusedElement = document.activeElement;
+
+
+
+            subtitle.textContent = `${formatDate(dateKey)} - ${reading}`;
+
+            modalBody.innerHTML = '';
+
+
+
+            const loading = document.createElement('div');
+
+            loading.className = 'loading-text';
+
+            loading.textContent = 'Carregando texto...';
+
+            modalBody.appendChild(loading);
+
+
+
+            modal.classList.add('open');
+
+            modal.setAttribute('aria-hidden', 'false');
+
+            document.body.classList.add('modal-open');
+
+
+
+            try {
+
+                await loadBibleData();
+
+                const segments = parseReadingSegments(reading);
+
+
+
+                modalBody.innerHTML = '';
+
+                segments.forEach(segment => {
+
+                    const section = document.createElement('section');
+
+                    section.className = 'reading-section';
+
+
+
+                    const heading = document.createElement('h3');
+
+                    heading.textContent = segment.segment;
+
+                    section.appendChild(heading);
+
+
+
+                    if (segment.error) {
+
+                        const errorText = document.createElement('div');
+
+                        errorText.className = 'error-text';
+
+                        errorText.textContent = segment.error;
+
+                        section.appendChild(errorText);
+
+                    } else {
+
+                        section.appendChild(buildPassageContent(segment.book, segment.range));
+
+                    }
+
+
+
+                    modalBody.appendChild(section);
+
+                });
+
+            } catch (error) {
+
+                modalBody.innerHTML = '';
+
+                const errorText = document.createElement('div');
+
+                errorText.className = 'error-text';
+
+                errorText.textContent = 'Não foi possível carregar o texto bíblico.';
+
+                modalBody.appendChild(errorText);
+
+                console.error(error);
+
+            }
+
+
+
+            const closeButton = modal.querySelector('.modal-close');
+
+            closeButton.focus();
+
+        }
+
+
+
+        function closeReadingModal() {
+
+            const modal = document.getElementById('reading-modal');
+
+            if (!modal.classList.contains('open')) {
+
+                return;
+
+            }
+
+
+
+            modal.classList.remove('open');
+
+            modal.setAttribute('aria-hidden', 'true');
+
+            document.body.classList.remove('modal-open');
+
+
+
+            if (lastFocusedElement) {
+
+                lastFocusedElement.focus();
+
+                lastFocusedElement = null;
+
+            }
+
+        }
+
+
+
+        function setupModalEvents() {
+
+            const modal = document.getElementById('reading-modal');
+
+            const closeButton = modal.querySelector('.modal-close');
+
+
+
+            closeButton.addEventListener('click', closeReadingModal);
+
+            modal.addEventListener('click', event => {
+
+                if (event.target === modal) {
+
+                    closeReadingModal();
+
+                }
+
+            });
+
+
+
+            document.addEventListener('keydown', event => {
+
+                if (event.key === 'Escape') {
+
+                    closeReadingModal();
+
+                }
+
+            });
+
+        }
+
+
+
+        function renderCalendars() {
+
+            const tabs = document.getElementById('month-tabs');
+
+            const wrapper = document.getElementById('calendar-wrapper');
+
+
+
+            tabs.innerHTML = '';
+
+            wrapper.innerHTML = '';
+
+
+
+            monthLabels.forEach((label, index) => {
+
+                const tab = document.createElement('button');
+
+                tab.className = 'month-tab';
+
+                tab.type = 'button';
+
+                tab.dataset.month = index;
+
+                tab.textContent = `${label} ${YEAR}`;
+
+                tab.addEventListener('click', () => switchMonth(index));
+
+                tabs.appendChild(tab);
+
+
+
+                const calendar = createCalendarMonth(index);
+
+                wrapper.appendChild(calendar);
+
+            });
+
+
+
+            switchMonth(0);
+
+        }
+
+
+
+        document.addEventListener('DOMContentLoaded', async () => {
+
+            try {
+
+                const planData = await fetchJson(PLAN_URL);
+
+                readingByDate = buildReadingMap(planData);
+
+            } catch (error) {
+
+                const inlinePlan = window.INLINE_PLAN;
+
+                if (Array.isArray(inlinePlan) && inlinePlan.length) {
+
+                    readingByDate = buildReadingMap(inlinePlan);
+
+                    console.warn('Plano carregado via plan-data.js (modo local).');
+
+                } else {
+
+                    console.error('Erro ao carregar o plano de leitura.', error);
+
+                    readingByDate = {};
+
+                }
+
+            }
+
+
+
+            renderCalendars();
+            setupMonthMenuToggle();
+
+            setupModalEvents();
+
+
+
+            console.log('PARA ADICIONAR SUA IMAGEM:');
+
+            console.log('1. Remova o texto "LOGO DA IGREJA" no cabeçalho');
+
+            console.log('2. Substitua pelo código: <img src="caminho/da/sua/imagem.jpg" alt="Logo">');
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
